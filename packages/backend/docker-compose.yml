@@ -1,0 +1,31 @@
+services:
+  pg:
+    image: postgres:13
+    restart: always
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+      - ./init.sql:docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+  node:
+    image: node:16
+    working_dir: /usr
+    environment:
+      DB_USER: postgres
+      DB_PWD: postgres
+      DB_TYPE: postgres
+      DB_HOST: pg
+      DB_PORT: 5432
+      DB_NAME: postgres
+    volumes:
+      - .:/usr
+    ports:
+      - 8000:8000
+    command: bash -c "yarn install && yarn start"
+
+
+    
