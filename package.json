@@ -6,6 +6,7 @@
     "dev": "concurrently -c red,green \"yarn start\" \"yarn start:backend\"",
     "start": "yarn workspace example start",
     "start:backend": "yarn workspace example-backend start",
+    "build": "lerna run build",
     "build:watch": "lerna run dev"
   },
   "workspaces": {

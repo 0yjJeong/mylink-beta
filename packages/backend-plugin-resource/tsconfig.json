@@ -2,6 +2,7 @@
   "compilerOptions": {
     "lib": ["dom", "esnext"],
     "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
     "jsx": "react",
     "esModuleInterop": true
   },

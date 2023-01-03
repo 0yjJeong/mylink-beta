@@ -17,6 +17,8 @@
     "typeorm": "^0.3.11",
     "pluralize": "^8.0.0",
     "url-metadata": "^2.5.0",
+    "uuid": "^9.0.0",
+    "tldts": "^5.7.103",
     "@types/url-metadata": "^2.4.0"
   }
 }

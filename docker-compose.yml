@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  pg:
+    image: postgres:13
+    container_name: pg
+    restart: always
+    volumes:
+      - ./packages/backend/postgresql/data:/var/lib/postgresql/data
+      - ./packages/backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=resource
+      - POSTGRES_PASSWORD=resource
+      - POSTGRES_DB=resource
+  nginx:
+    restart: always
+    build: 
+      dockerfile: Dockerfile
+      context: ./lib/nginx
+    ports:
+      - 3000:80
+  example:
+    container_name: example
+    build:
+      context: .
+      dockerfile: ./example/Dockerfile
+    depends_on:
+      - backend-example 
+    links:
+      - backend-example  
+  backend-example:
+    container_name: backend-example
+    build:
+      context: .
+      dockerfile: ./packages/backend/Dockerfile
+    restart: always
+    depends_on:
+      - pg
+    links:
+      - pg
+    environment:
+      - DATABASE_URL=postgres://resource:resource@pg:5432/resource
+          

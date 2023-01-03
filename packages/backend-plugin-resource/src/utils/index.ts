@@ -1,0 +1,1 @@
+export { isSameSource } from './isSameSource';

@@ -1,1 +1,2 @@
-export { resourceDatabase, createRouter } from './resource';
+export { createDatabase } from './database';
+export { createRouter } from './router';

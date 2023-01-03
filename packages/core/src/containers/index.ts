@@ -1,1 +1,2 @@
-export { default as Editor } from './editor';
+export { Core } from './core';
+export { Resource } from './resource';
