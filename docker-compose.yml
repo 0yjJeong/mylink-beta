@@ -41,5 +41,5 @@ services:
     links:
       - pg
     environment:
-      - DATABASE_URL=postgres://resource:resource@pg:5432/resource
+      - DATABASE_URL=localhost://resource:resource@pg:5432/resource
           
